@@ -10,7 +10,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    super.initState();  
+    super.initState();
     Future.delayed(Duration(seconds: 6), () {
       Navigator.push(
         context,
@@ -23,9 +23,17 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+        backgroundColor: Color(0xff0076BC),
         body: Center(
-      child: Text('iWise'),
-    ));
+          child: Text(
+            'IWISE',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 70.0,
+            ),
+          ),
+        ));
   }
 }

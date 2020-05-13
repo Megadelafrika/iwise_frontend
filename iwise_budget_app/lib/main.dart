@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'splashScreen.dart';
 
-void main() {
-  runApp(MaterialApp(home: SplashScreen()));
-}
+void main() => runApp(MaterialApp(home: SplashScreen()));
 
 class MyApp extends StatelessWidget {
   build(context) {
