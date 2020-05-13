@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'login.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -7,12 +9,23 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  void initState() {
+    super.initState();  
+    Future.delayed(Duration(seconds: 6), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Login(),
+        ),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: FlutterLogo(
-        size: 300,
-      ),
+      child: Text('iWise'),
     ));
   }
 }
