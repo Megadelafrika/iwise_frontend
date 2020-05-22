@@ -1,8 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iwise/components/colors.dart';
+import 'package:iwise/screens/login.dart';
 import 'package:iwise/textFieldsInputs.dart';
+
+import 'individualDashboard.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -11,6 +15,28 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final GlobalKey<FormState> _form = GlobalKey<FormState>();
+  TextEditingController fullNameController;
+  TextEditingController emailController;
+  TextEditingController passwordController;
+  TextEditingController confirmPasswordController;
+@override
+  void initState() {
+  fullNameController = TextEditingController();
+  emailController = TextEditingController();
+  passwordController = TextEditingController();
+  confirmPasswordController = TextEditingController();
+    super.initState();
+  }
+
+@override
+  void dispose() {
+   fullNameController.dispose();
+   emailController.dispose();
+   passwordController.dispose();
+   confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +62,7 @@ class _SignUpState extends State<SignUp> {
               ),
               Text(
                 'In just few steps create an account and \n get access to your financial freedom',
-                style: GoogleFonts.raleway(),
+
               ),
               SizedBox(
                 height: 34,
@@ -47,53 +73,88 @@ class _SignUpState extends State<SignUp> {
                   children: [
                     TextValues(
                       title: 'Full Name',
+                      obscure: false,
+                      validate: (val) {
+                        if (val.isEmpty) {
+                          return "This field can't be Empty";
+                        } else
+                          return null;
+                      },
                     ),
                     SizedBox(
                       height: 24,
                     ),
                     TextValues(
                       title: 'Email Address ',
+                      obscure: false,
+                      keyboard: TextInputType.emailAddress,
+                      controller: emailController,
+                      validate: (val) {
+                        if (val.isEmpty) {
+                          return "This field can't be Empty";
+                        } else
+                          return null;
+                      },
                     ),
                     SizedBox(
                       height: 24,
                     ),
                     TextValues(
                       title: 'Password',
+                      obscure: true,
+                      controller: passwordController,
+                      validate: (val) {
+                        if (val.isEmpty) {
+                          return "This field can't be Empty";
+                        } else
+                          return null;
+                      },
                     ),
                     SizedBox(
                       height: 24,
                     ),
                     TextValues(
                       title: 'Confirm Password',
+                      controller: confirmPasswordController,
+                      obscure: true,
+                      validate: (val) {
+                        if (val.isEmpty) {
+                          return "This field can't be Empty";
+                        }
+                        return null;
+                      },
                     ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 36,
-              ),
-              InkWell(
-                onTap: () {},
-                hoverColor: Colors.blue,
-                child: Container(
-                  width: double.infinity,
-                  height: 56,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7),
-                    color: mainColor,
-                  ),
-                  child: Center(
-                    child: Text(
-                      'CREATE ACCOUNT',
-                      style: GoogleFonts.raleway(
-                        textStyle: TextStyle(
-                          color: white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
+                    SizedBox(
+                      height: 36,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        if (_form.currentState.validate()) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  IndividualDashboard()));
+                        }
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 56,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7),
+                          color: mainColor,
+                        ),
+                        child: Center(
+                          child: Text(
+                            'CREATE ACCOUNT',
+                            style: TextStyle(
+                              color: white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
               SizedBox(
@@ -104,15 +165,17 @@ class _SignUpState extends State<SignUp> {
                 children: [
                   Text('Already have an account'),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              Login()));
+                    },
                     child: Text(
                       'Login',
-                      style: GoogleFonts.raleway(
-                        textStyle: TextStyle(
+                      style: TextStyle(
                             color: mainColor, fontWeight: FontWeight.w500),
                       ),
                     ),
-                  ),
                 ],
               ),
               SizedBox(

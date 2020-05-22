@@ -1,28 +1,20 @@
 import 'package:flutter/material.dart';
 
-class TextValues extends StatefulWidget {
+class TextValues extends StatelessWidget {
   final String title;
-  final bool hidePassword;
-  TextValues({this.title, this.hidePassword});
-
-  @override
-  _TextValuesState createState() => _TextValuesState();
-}
-
-class _TextValuesState extends State<TextValues> {
-  final TextEditingController _textEditingController = TextEditingController();
-  @override
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
-  }
+  final bool obscure;
+  final TextInputType keyboard;
+  final Function validate;
+  final TextEditingController controller;
+  TextValues({this.title, this.obscure, this.validate, this.controller, this.keyboard});
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: _textEditingController,
-      obscureText: false,
-      decoration: InputDecoration(labelText: widget.title),
+    return TextFormField(
+      controller:controller,
+      obscureText: obscure,
+      decoration: InputDecoration(labelText:title),
+      validator:validate,
     );
   }
 }
