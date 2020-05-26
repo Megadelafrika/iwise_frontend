@@ -11,8 +11,10 @@ import 'package:iwisebudgetapp/budgets/screens/saved-budgets.dart';
 import 'package:iwisebudgetapp/budgets/screens/welldone-screen.dart';
 import 'package:iwisebudgetapp/budgets/screens/create-budget.dart';
 import 'package:iwisebudgetapp/signup/signUp.dart';
+import 'package:iwisebudgetapp/login/login.dart';
 import 'budgets/screens/add-budget.dart';
 import 'budgets/screens/create-budget.dart';
+import 'package:iwisebudgetapp/components/individualDashboard.dart';
 
 
 void main() => runApp(MyApp());
@@ -38,6 +40,9 @@ class MyApp extends StatelessWidget {
       ),
       home: SplashScreen(),
       routes: {
+        '/individualDashboard': (context) => IndividualDashboard(),
+        '/login': (context) => Login(),
+        '/onboarding': (context) => LandingPage(),
         '/signUp': (context) => SignUp(),
         '/wallet': (context) => Wallet(),
         '/createBudget': (context) => CreateBudget(),

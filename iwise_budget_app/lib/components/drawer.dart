@@ -5,8 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import './colors.dart';
 
 class CustomDrawer extends StatelessWidget {
-	String name = 'Lolade Adams';
-	String email = 'Email@user.com';
+	String name = 'Olatayo';
+	String email = 'Tayo@gmail.com';
 	@override
 	Widget build(BuildContext context) {
 		return Drawer(

@@ -1,11 +1,13 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+
 import './colors.dart';
 import './dashboardCard.dart';
 import './drawer.dart';
 import 'package:iwisebudgetapp/login/login.dart';
-
+import 'package:iwisebudgetapp/budgets/AppAndBottomNavigation/Bottom_Navigation.dart';
 class IndividualDashboard extends StatefulWidget {
 	@override
 	_IndividualDashboardState createState() => _IndividualDashboardState();
@@ -18,7 +20,7 @@ class _IndividualDashboardState extends State<IndividualDashboard> {
 	Widget build(BuildContext context) {
 		return Scaffold(
 			appBar:AppBar(
-				elevation: 0,
+				elevation: 0.0,
 				backgroundColor: mainColor,
 				title: Text('Hi '+name,style: TextStyle(fontSize: 24),),
 				actions: [
@@ -68,14 +70,14 @@ class _IndividualDashboardState extends State<IndividualDashboard> {
 						),
 						SizedBox(height: 30,),
 						Padding(
-							padding: const EdgeInsets.symmetric(horizontal:16.0),
+							padding: EdgeInsets.symmetric(horizontal:16.0),
 							child: Row(
 								children: [
 									DashboardCard(
 										img: 'assets/icon1.svg',
 										title: 'Budget',
 										onpressed: (){
-
+												Navigator.pushReplacementNamed(context, '/createBudget');
 										},
 									),
 									SizedBox(width: 10,),
@@ -138,6 +140,7 @@ class _IndividualDashboardState extends State<IndividualDashboard> {
 					],
 				),
 			),
+			bottomNavigationBar: BottomNavigation(),
 		);
 	}
 }

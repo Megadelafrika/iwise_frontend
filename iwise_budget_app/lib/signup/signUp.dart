@@ -1,13 +1,12 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iwisebudgetapp/components/colors.dart';
 import 'package:iwisebudgetapp/login/login.dart';
 import 'package:iwisebudgetapp/textFieldInputs.dart';
-
-import 'package:iwisebudgetapp/components/individualDashboard.dart';
 
 class SignUp extends StatefulWidget {
 	@override
@@ -131,9 +130,7 @@ class _SignUpState extends State<SignUp> {
 										InkWell(
 											onTap: () {
 												if (_form.currentState.validate()) {
-													Navigator.of(context).push(MaterialPageRoute(
-															builder: (BuildContext context) =>
-																	IndividualDashboard()));
+													Navigator.pushReplacementNamed(context, '/individualDashboard');
 												}
 											},
 											child: Container(
@@ -164,17 +161,24 @@ class _SignUpState extends State<SignUp> {
 							Row(
 								mainAxisAlignment: MainAxisAlignment.center,
 								children: [
-									Text('Already have an account'),
+									Padding(
+									  padding: const EdgeInsets.all(20.0),
+									  child: Text('Already have an account?'),
+									),
+									SizedBox(height: 10.0,),
 									InkWell(
 										onTap: () {
 											Navigator.of(context).push(MaterialPageRoute(
 													builder: (BuildContext context) =>
 															Login()));
 										},
-										child: Text(
-											'Login',
-											style: TextStyle(
-													color: mainColor, fontWeight: FontWeight.w500),
+										child: Padding(
+										  padding: EdgeInsets.all(5.0),
+										  child: Text(
+										  	'Login',
+										  	style: TextStyle(
+										  			color: mainColor, fontWeight: FontWeight.w500),
+										  ),
 										),
 									),
 								],
