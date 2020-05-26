@@ -26,7 +26,9 @@ class AddBudgetAppBar extends StatelessWidget {
               color: Colors.blueGrey[800],
               size: 26.0,
             ),
-            onPressed: (){},
+            onPressed: (){
+              print("clicked");
+            },
           ),
         ),
       ],

@@ -10,31 +10,28 @@ class AddBudget extends StatelessWidget {
     return DefaultTabController(
       length: 12,
       child: Scaffold(
-        backgroundColor: Colors.blue[50],
+//        backgroundColor: Colors.blue[50],
 
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(160.0), // here the desired height
-
           child: AddBudgetAppBar(),
         ),
         body: TabBarView(
           children: <Widget>[
             AddTabJanuary(),
-            AddTab_February(),
-            AddTab_February(),
-            AddTab_February(),
-            AddTab_February(),
-            AddTab_February(),
-            AddTab_February(),
-            AddTab_February(),
-            AddTab_February(),
-            AddTab_February(),
-            AddTab_February(),
-            AddTab_February(),
+            AddTabFebruary(),
+            AddTabFebruary(),
+            AddTabFebruary(),
+            AddTabFebruary(),
+            AddTabFebruary(),
+            AddTabFebruary(),
+            AddTabFebruary(),
+            AddTabFebruary(),
+            AddTabFebruary(),
+            AddTabFebruary(),
+            AddTabFebruary(),
           ],
         ),
-
-
         bottomNavigationBar: BottomNavigation(),
       ),
     );

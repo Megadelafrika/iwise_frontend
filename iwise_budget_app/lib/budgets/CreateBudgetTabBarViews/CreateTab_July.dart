@@ -27,8 +27,9 @@ class _CreateTab_JulyState extends State<CreateTab_July> {
               margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 20.0,),
               child: Text('Nothing Here',
                 style: TextStyle(
-                  color: Colors.grey[600],
-                  fontFamily: 'Roboto/Roboto-Regular.ttf',
+                    color: Color(0xff555A5B),
+                    fontFamily: 'Roboto/Roboto-Regular.ttf',
+                    fontSize: 14.0
                 ),
 
               ),
@@ -40,11 +41,8 @@ class _CreateTab_JulyState extends State<CreateTab_July> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10.0),
-                  topRight: Radius.circular(10.0),
-                  bottomLeft: Radius.circular(10.0),
-                  bottomRight: Radius.circular(10.0),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10.0),
                 ),
               ),
               child: IconButton(
@@ -57,7 +55,7 @@ class _CreateTab_JulyState extends State<CreateTab_July> {
                 icon: Icon(
                   Icons.add,
                   color: Colors.blue,
-                  size: 30.0,
+                  size: 18.0,
                 ),
               ),
             ),
@@ -68,10 +66,9 @@ class _CreateTab_JulyState extends State<CreateTab_July> {
                 child: Text('Create A Budget',
                   style: TextStyle(
                     fontFamily: 'Roboto/Roboto-Medium.ttf',
-                    fontSize: 20.0,
-                    color: Colors.blue[700],
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.0,
+                    fontSize: 18.0,
+                    color: Color(0xff0076BC),
+                    fontWeight: FontWeight.normal,
                     decoration: TextDecoration.underline,
                   ),
                 ),
@@ -83,7 +80,6 @@ class _CreateTab_JulyState extends State<CreateTab_July> {
 
           ],
         ),
-
       ],
     );
   }

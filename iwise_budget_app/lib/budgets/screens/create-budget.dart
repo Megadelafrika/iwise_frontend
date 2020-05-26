@@ -15,19 +15,12 @@ import 'package:iwisebudgetapp/budgets/CreateBudgetTabBarViews/CreateTab_Novembe
 import 'package:iwisebudgetapp/budgets/CreateBudgetTabBarViews/CreateTab_October.dart';
 import 'package:iwisebudgetapp/budgets/CreateBudgetTabBarViews/CreateTab_September.dart';
 
+import 'add-budget.dart';
+import 'saved-budgets.dart';
+import 'welldone-screen.dart';
+
 
 /// This Widget is the main application widget.
-//void main() => runApp(MaterialApp(
-//  initialRoute: '/home',
-//  routes: {
-//    '/': (context) => Home(),
-//    '/home': (context) => Home(),
-//    '/addBudget': (context) => AddBudget(),
-//    '/savedBudget': (context) => SavedBudget(),
-//    '/wellDone': (context) => WellDoneScreen(),
-//
-//  },
-//));
 
 class CreateBudget extends StatelessWidget {
   @override
@@ -35,14 +28,13 @@ class CreateBudget extends StatelessWidget {
     return DefaultTabController(
       length: 12,
       child: Scaffold(
-        backgroundColor: Colors.blue[50],
+        backgroundColor: Color(0xffE5E5E5),
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(160.0),
-          // here the desired height
+          preferredSize: Size.fromHeight(140.0),
 
+          // here the desired height
           child: AppAndTabBar(),
         ),
-
         body: TabBarView(
           children: <Widget>[
             CreateTab_January(),

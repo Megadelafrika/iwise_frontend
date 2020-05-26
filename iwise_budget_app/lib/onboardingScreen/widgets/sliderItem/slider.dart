@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:iwisebudgetapp/constants/constants.dart';
-import 'package:iwisebudgetapp/models/slider.dart';
+import 'package:iwisebudgetapp/onboardingScreen/models/slider.dart';
 
 class SlideItem extends StatelessWidget {
   final int index;
@@ -12,32 +11,33 @@ class SlideItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        Text(
+          sliderArrayList[index].sliderHeading,
+          style: TextStyle(
+            color: Color(0xff0076BC),
+            fontWeight: FontWeight.w700,
+            fontSize: 24.0,
+          ),
+        ),
+        SizedBox(
+          height: 25.0,
+        ),
         Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: 40.0),
             child: Text(
-              sliderArrayList[index].sliderHeading,
+              sliderArrayList[index].sliderSubHeading,
               style: TextStyle(
-                color: Color(0xff0076BC),
-                fontWeight: FontWeight.bold,
-                fontSize: 24.0,
+                fontWeight: FontWeight.w500,
+                fontSize: 14.0,
+                color: Color(0xff555A5B)
               ),
               textAlign: TextAlign.center,
             ),
           ),
         ),
         SizedBox(
-          height: 10.0,
-        ),
-        Text(
-          sliderArrayList[index].sliderSubHeading,
-          style: TextStyle(
-            fontSize: 16.0,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(
-          height: 15.0,
+          height: 35.0,
         ),
         Container(
           height: MediaQuery.of(context).size.width * 0.6,
@@ -46,6 +46,10 @@ class SlideItem extends StatelessWidget {
               image: DecorationImage(
                   image: AssetImage(sliderArrayList[index].sliderImageUrl))),
         ),
+        SizedBox(
+          height: 60.0,
+        ),
+
       ],
     );
   }

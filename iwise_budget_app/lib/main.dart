@@ -1,7 +1,19 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:iwisebudgetapp/screens/landing_page.dart';
+
+
+import 'package:iwisebudgetapp/splashscreen/splashScreen.dart';
+import 'package:iwisebudgetapp/onboardingScreen/screens/landingPage.dart';
+import 'package:iwisebudgetapp/iWallet/iwallet.dart';
+import 'package:iwisebudgetapp/budgets/screens/add-budget.dart';
+import 'package:iwisebudgetapp/budgets/screens/saved-budgets.dart';
+import 'package:iwisebudgetapp/budgets/screens/welldone-screen.dart';
+import 'package:iwisebudgetapp/budgets/screens/create-budget.dart';
+import 'package:iwisebudgetapp/signup/signUp.dart';
+import 'budgets/screens/add-budget.dart';
+import 'budgets/screens/create-budget.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -24,7 +36,16 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         platform: TargetPlatform.iOS,
       ),
-      home: LandingPage(),
+      home: SplashScreen(),
+      routes: {
+        '/signUp': (context) => SignUp(),
+        '/wallet': (context) => Wallet(),
+        '/createBudget': (context) => CreateBudget(),
+        '/addBudget': (context) => AddBudget(),
+        '/savedBudget': (context) => SavedBudget(),
+        '/wellDone': (context) => WellDoneScreen(),
+      },
+
     );
   }
 }

@@ -27,8 +27,9 @@ class _CreateTab_AprilState extends State<CreateTab_April> {
               margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 20.0,),
               child: Text('Nothing Here',
                 style: TextStyle(
-                  color: Colors.grey[600],
+                  color: Color(0xff555A5B),
                   fontFamily: 'Roboto/Roboto-Regular.ttf',
+                  fontSize: 14.0
                 ),
 
               ),
@@ -54,7 +55,7 @@ class _CreateTab_AprilState extends State<CreateTab_April> {
                 icon: Icon(
                   Icons.add,
                   color: Colors.blue,
-                  size: 30.0,
+                  size: 18.0,
                 ),
               ),
             ),
@@ -65,10 +66,9 @@ class _CreateTab_AprilState extends State<CreateTab_April> {
                 child: Text('Create A Budget',
                   style: TextStyle(
                     fontFamily: 'Roboto/Roboto-Medium.ttf',
-                    fontSize: 20.0,
-                    color: Colors.blue[700],
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.0,
+                    fontSize: 18.0,
+                    color: Color(0xff0076BC),
+                    fontWeight: FontWeight.normal,
                     decoration: TextDecoration.underline,
                   ),
                 ),

@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:iwisebudgetapp/constants/constants.dart';
-import 'package:iwisebudgetapp/models/slider.dart';
-import 'package:iwisebudgetapp/widgets/slidedot.dart';
-import 'package:iwisebudgetapp/widgets/slider_items/slider_item.dart';
+import 'package:flutter/material.dart';
+import 'package:iwisebudgetapp/onboardingScreen/constants/constants.dart';
+import 'package:iwisebudgetapp/onboardingScreen/models/slider.dart';
+import 'package:iwisebudgetapp/onboardingScreen/widgets/dots.dart';
+import 'package:iwisebudgetapp/onboardingScreen/widgets/sliderItem/slider.dart';
+import 'dart:convert';
 
 class SliderLayoutView extends StatefulWidget {
   @override
@@ -12,11 +14,17 @@ class SliderLayoutView extends StatefulWidget {
 }
 
 class _SliderLayoutViewState extends State<SliderLayoutView> {
+
+
+  void getData() async{
+  }
+
   int _currentPage = 0;
   final PageController _pageController = PageController(initialPage: 0);
 
   @override
   void initState() {
+    getData();
     super.initState();
     Timer.periodic(Duration(seconds: 5), (Timer timer) {
       if (_currentPage < 2) {
@@ -44,7 +52,7 @@ class _SliderLayoutViewState extends State<SliderLayoutView> {
 
   Widget topSliderLayout() => Container(
     child: Padding(
-        padding: EdgeInsets.all(12.0),
+        padding: EdgeInsets.all(10.0),
         child: Stack(
           alignment: AlignmentDirectional.bottomCenter,
           children: <Widget>[
@@ -61,13 +69,17 @@ class _SliderLayoutViewState extends State<SliderLayoutView> {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: Padding(
-                    padding: EdgeInsets.only(right: 15.0, bottom: 15.0),
-                    child: Text(
-                      Constants.NEXT,
-                      style: TextStyle(
-                        fontFamily: Constants.OPEN_SANS,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14.0,
+                    padding: EdgeInsets.only(right: 8.0, bottom: 8.0),
+                    child: FlatButton(
+                      onPressed: (){
+                      _pageController.nextPage(duration: Duration(milliseconds: 800), curve: Curves.ease);
+                      },
+                      child: Text(
+                        Constants.NEXT,
+                        style: TextStyle(
+                          color: Color(0xff555A5B),
+                          fontSize: 15.0
+                        ),
                       ),
                     ),
                   ),
@@ -75,13 +87,17 @@ class _SliderLayoutViewState extends State<SliderLayoutView> {
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 15.0, bottom: 15.0),
-                    child: Text(
-                      Constants.SKIP,
-                      style: TextStyle(
-                        fontFamily: Constants.OPEN_SANS,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14.0,
+                    padding: EdgeInsets.only(left: 8.0, bottom: 8.0),
+                    child: FlatButton(
+                      onPressed: (){
+                        Navigator.pushReplacementNamed(context, '/createBudget');
+                      },
+                      child: Text(
+                        Constants.SKIP,
+                        style: TextStyle(
+                            color: Color(0xff555A5B),
+                            fontSize: 15.0
+                        ),
                       ),
                     ),
                   ),

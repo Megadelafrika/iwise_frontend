@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iwisebudgetapp/budgets//AddBudgetTabBarViews/AddTab_Vectors.dart';
+import 'package:iwisebudgetapp/budgets/AddBudgetTabBarViews/AddTab_Vectors.dart';
 
 class AddTabJanuary extends StatefulWidget {
   @override

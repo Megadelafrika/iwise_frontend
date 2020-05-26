@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AddTab_February extends StatefulWidget {
+class AddTabFebruary extends StatefulWidget {
 
   @override
-  _AddTab_FebruaryState createState() => _AddTab_FebruaryState();
+  _AddTabFebruaryState createState() => _AddTabFebruaryState();
 }
 
-class _AddTab_FebruaryState extends State<AddTab_February> {
+class _AddTabFebruaryState extends State<AddTabFebruary> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +29,7 @@ class _AddTab_FebruaryState extends State<AddTab_February> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30.0, vertical: 0.0),
                     child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/agric-vector.png'),
+                      backgroundImage: AssetImage('assets/Agriculture.png'),
                       radius: 25.0,
                     ),
                   ),
@@ -38,7 +38,7 @@ class _AddTab_FebruaryState extends State<AddTab_February> {
                         horizontal: 30.0, vertical: 0.0),
                     child: CircleAvatar(
                       backgroundImage:
-                      AssetImage('assets/airline-vector.png'),
+                      AssetImage('assets/.png'),
                       radius: 25.0,
                     ),
                   ),

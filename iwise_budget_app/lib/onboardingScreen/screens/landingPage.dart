@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iwisebudgetapp/constants/constants.dart';
-import 'package:iwisebudgetapp/views/slider_view.dart';
-import 'package:iwisebudgetapp/widgets/customfonts.dart';
+import 'package:iwisebudgetapp/onboardingScreen/view/layoutView.dart';
 
 class LandingPage extends StatefulWidget {
   @override
