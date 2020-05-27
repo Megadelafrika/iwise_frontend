@@ -7,7 +7,9 @@ class TextValues extends StatelessWidget {
 	final TextInputType keyboard;
 	final Function validate;
 	final TextEditingController controller;
-	TextValues({this.title, this.obscure, this.validate, this.controller, this.keyboard});
+	final int passwordLength;
+	final Function saved;
+	TextValues({this.title, this.obscure, this.validate, this.controller, this.keyboard, this.passwordLength, this.saved});
 
 	@override
 	Widget build(BuildContext context) {
@@ -16,6 +18,8 @@ class TextValues extends StatelessWidget {
 			obscureText: obscure,
 			decoration: InputDecoration(labelText:title),
 			validator:validate,
+			onSaved: saved,
+			maxLength: passwordLength,
 		);
 	}
 }

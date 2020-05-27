@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:iwisebudgetapp/components/colors.dart';
 import 'package:iwisebudgetapp/login/login.dart';
 import 'package:iwisebudgetapp/textFieldInputs.dart';
+import 'package:iwisebudgetapp/signupModel.dart';
 
 class SignUp extends StatefulWidget {
 	@override
@@ -14,12 +15,27 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+	String _password ;
+	String _confirmPassword;
+
+	//We just create a model for the signup.
+	//Here we can be able to transfer user input to the registration API.
+	SignUpModel model = SignUpModel();
+
+
 	final GlobalKey<FormState> _form = GlobalKey<FormState>();
 	TextEditingController fullNameController;
 	TextEditingController emailController;
 	TextEditingController passwordController;
 	TextEditingController confirmPasswordController;
 	@override
+
+	_OnSubmit(){
+		if (_form.currentState.validate()) {
+			Navigator.pushReplacementNamed(context, '/individualDashboard');
+		}
+	}
+
 	void initState() {
 		fullNameController = TextEditingController();
 		emailController = TextEditingController();
@@ -58,14 +74,14 @@ class _SignUpState extends State<SignUp> {
 												fontWeight: FontWeight.bold)),
 							),
 							SizedBox(
-								height: 24,
+								height: 20,
 							),
 							Text(
 								'In just few steps create an account and \n get access to your financial freedom',
 
 							),
 							SizedBox(
-								height: 34,
+								height: 20,
 							),
 							Form(
 								key: _form,
@@ -74,65 +90,86 @@ class _SignUpState extends State<SignUp> {
 										TextValues(
 											title: 'Full Name',
 											obscure: false,
-											validate: (val) {
+											validate: (String val) {
 												if (val.isEmpty) {
 													return "This field can't be Empty";
 												} else
 													return null;
 											},
+											saved: (String val){
+												model.UserfullName = val;
+											},
 										),
 										SizedBox(
-											height: 24,
+											height: 20,
 										),
 										TextValues(
 											title: 'Email Address ',
 											obscure: false,
 											keyboard: TextInputType.emailAddress,
 											controller: emailController,
-											validate: (val) {
-												if (val.isEmpty) {
-													return "This field can't be Empty";
-												} else
-													return null;
-											},
-										),
-										SizedBox(
-											height: 24,
-										),
-										TextValues(
-											title: 'Password',
-											obscure: true,
-											controller: passwordController,
-											validate: (val) {
-												if (val.isEmpty) {
-													return "This field can't be Empty";
-												} else
-													return null;
-											},
-										),
-										SizedBox(
-											height: 24,
-										),
-										TextValues(
-											title: 'Confirm Password',
-											controller: confirmPasswordController,
-											obscure: true,
-											validate: (val) {
-												if (val.isEmpty) {
-													return "This field can't be Empty";
+											validate: (String val) {
+												if(val.isEmpty){
+													return "Email cannot be empty";
 												}
 												return null;
 											},
+											saved: (String val){
+												model.UserEmail = val;
+											},
 										),
 										SizedBox(
-											height: 36,
+											height: 20,
+										),
+										TextValues(
+											passwordLength: 10,
+											title: 'Password',
+											obscure: true,
+											controller: passwordController,
+											validate: (String val) {
+												if (val.isEmpty ) {
+													return "Password is required";
+												} if(val.length < 10){
+													return "Password must be greater than 8 characters";
+												}
+												_form.currentState.save();
+													return null;
+											},
+											saved: (String val){
+												model.UserPassword = val;
+											},
+										),
+										SizedBox(
+											height: 20,
+										),
+										TextValues(
+											passwordLength: 10,
+											title: 'Confirm Password',
+											controller: confirmPasswordController,
+											obscure: true,
+											validate: (String val) {
+												if (val.isEmpty) {
+													return "This field can't be Empty";
+												}
+												if(val.length < 10){
+													return "Password must be greater than 8 characters";
+												}
+												if(_confirmPassword != _password){
+													return "Passwords do not match";
+												}
+												return null;
+											},
+											saved: (String val){
+												setState(() {
+												  _confirmPassword = val;
+												});
+											},
+										),
+										SizedBox(
+											height: 25,
 										),
 										InkWell(
-											onTap: () {
-												if (_form.currentState.validate()) {
-													Navigator.pushReplacementNamed(context, '/individualDashboard');
-												}
-											},
+											onTap: _OnSubmit,
 											child: Container(
 												width: double.infinity,
 												height: 56,
@@ -156,7 +193,7 @@ class _SignUpState extends State<SignUp> {
 								),
 							),
 							SizedBox(
-								height: 24,
+								height: 20,
 							),
 							Row(
 								mainAxisAlignment: MainAxisAlignment.center,
@@ -184,11 +221,11 @@ class _SignUpState extends State<SignUp> {
 								],
 							),
 							SizedBox(
-								height: 16,
+								height: 10,
 							),
 							Text('or Sign-up With '),
 							SizedBox(
-								height: 16,
+								height: 10,
 							),
 							Row(
 								mainAxisAlignment: MainAxisAlignment.center,
