@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:validators/validators.dart' as validator;
 
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,7 +16,6 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-	String _password ;
 	String _confirmPassword;
 
 	//We just create a model for the signup.
@@ -28,14 +28,17 @@ class _SignUpState extends State<SignUp> {
 	TextEditingController emailController;
 	TextEditingController passwordController;
 	TextEditingController confirmPasswordController;
-	@override
 
-	_OnSubmit(){
+	_onSubmit(){
 		if (_form.currentState.validate()) {
 			Navigator.pushReplacementNamed(context, '/individualDashboard');
+			print(model.UserPassword);
+			print(model.UserEmail);
+			print(model.UserfullName);
 		}
 	}
 
+	@override
 	void initState() {
 		fullNameController = TextEditingController();
 		emailController = TextEditingController();
@@ -109,8 +112,8 @@ class _SignUpState extends State<SignUp> {
 											keyboard: TextInputType.emailAddress,
 											controller: emailController,
 											validate: (String val) {
-												if(val.isEmpty){
-													return "Email cannot be empty";
+												if(!validator.isEmail(val)){
+													return "Invalid email input";
 												}
 												return null;
 											},
@@ -154,7 +157,7 @@ class _SignUpState extends State<SignUp> {
 												if(val.length < 10){
 													return "Password must be greater than 8 characters";
 												}
-												if(_confirmPassword != _password){
+												if(_confirmPassword != model.UserPassword){
 													return "Passwords do not match";
 												}
 												return null;
@@ -169,7 +172,7 @@ class _SignUpState extends State<SignUp> {
 											height: 25,
 										),
 										InkWell(
-											onTap: _OnSubmit,
+											onTap: _onSubmit,
 											child: Container(
 												width: double.infinity,
 												height: 56,

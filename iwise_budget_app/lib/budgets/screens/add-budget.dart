@@ -10,11 +10,10 @@ class AddBudget extends StatelessWidget {
     return DefaultTabController(
       length: 12,
       child: Scaffold(
-//        backgroundColor: Colors.blue[50],
-
+        backgroundColor: Colors.blue[50],
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(160.0), // here the desired height
-          child: AddBudgetAppBar(),
+          child: AddBudget(),
         ),
         body: TabBarView(
           children: <Widget>[
