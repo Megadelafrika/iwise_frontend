@@ -14,7 +14,7 @@ description: A budgeting app that helps you track your spendings
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.5.2 <3.0.0"
 
 dependencies:
   flutter:
@@ -28,6 +28,8 @@ dependencies:
   animated_text_kit: ^2.0.0
   validators: ^2.0.0
   email_validator: ^1.0.0
+  http: any
+  shared_preferences: any
 
 dev_dependencies:
   flutter_test:

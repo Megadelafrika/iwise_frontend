@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart' as validator;
+import 'package:http/http.dart' as http;
 
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,12 +19,14 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
+	//this variable is used to check that the user input a valid password
 	String _confirmPassword;
+	bool isLoading = false;
 
 	//We just create a model for the signup.
 	//Here we can be able to transfer user input to the registration API.
 	SignUpModel model = SignUpModel();
-
 
 	final GlobalKey<FormState> _form = GlobalKey<FormState>();
 	TextEditingController fullNameController;
@@ -29,12 +34,30 @@ class _SignUpState extends State<SignUp> {
 	TextEditingController passwordController;
 	TextEditingController confirmPasswordController;
 
+//	The signUp collects data from the user then transfers it to the database.
+	Future signUp( ) async{
+		Map<String, dynamic> user = {
+			"name" : model.name,
+			"username": model.UserfullName,
+			"email": model.UserEmail,
+			"passoword": model.UserPassword
+		};
+		var bodyData = json.encode(user);
+		var jsonData;
+		http.Response response = await http.post("http://iwise.herokuapp.com/api/auth/signup", body: bodyData );
+		if(response.statusCode == 201){
+			jsonData = json.decode(response.body);
+			print(jsonData);
+		}
+		else {
+			print(response.statusCode);
+		}
+	}
 	_onSubmit(){
 		if (_form.currentState.validate()) {
 			Navigator.pushReplacementNamed(context, '/individualDashboard');
-			print(model.UserPassword);
-			print(model.UserEmail);
-			print(model.UserfullName);
+			signUp();
+		print(model.name);
 		}
 	}
 
@@ -91,6 +114,22 @@ class _SignUpState extends State<SignUp> {
 								child: Column(
 									children: [
 										TextValues(
+											title: "Name",
+											obscure: false,
+											validate: (String val){
+												if(val.isEmpty){
+													return "name is required";
+												}
+												return null;
+											},
+											saved: (String val){
+												model.name = val;
+											},
+										),
+										SizedBox(
+											height: 20,
+										),
+										TextValues(
 											title: 'Full Name',
 											obscure: false,
 											validate: (String val) {
@@ -112,7 +151,7 @@ class _SignUpState extends State<SignUp> {
 											keyboard: TextInputType.emailAddress,
 											controller: emailController,
 											validate: (String val) {
-												if(!validator.isEmail(val)){
+												if(val.isEmpty){
 													return "Invalid email input";
 												}
 												return null;
