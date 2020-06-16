@@ -12,14 +12,8 @@ class Transactions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Expanded(
-              child: Row(
-          children: <Widget>[
-            ListView.builder(
-              itemCount: 10,
-              shrinkWrap: true,
-            
-            )
-          ],
+        child: Row(
+          children: <Widget>[],
         ),
       ),
     );
