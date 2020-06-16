@@ -17,7 +17,7 @@ class Transactions extends StatelessWidget {
             ListView.builder(
               itemCount: 10,
               shrinkWrap: true,
-              // itemBuilder: (BuildContext context, int index) =>
+            
             )
           ],
         ),
